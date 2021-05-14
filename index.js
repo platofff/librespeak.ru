@@ -16,9 +16,11 @@ firebase.initializeApp(firebaseConfig)
 const onlineDiv = document.getElementById('online')
 const adminsDiv = document.getElementById('admins')
 const membersCount = document.getElementById('members-count')
+const updated = document.getElementById('updated')
 const getURL = (vkId) => vkId > 0 ? `https://vk.com/id${vkId}` : `https://vk.com/club${Math.abs(vkId)}`
+const database = firebase.database()
 
-firebase.database().ref('online').on('value', (snapshot) => {
+database.ref('online').on('value', (snapshot) => {
   const online = snapshot.val()
   onlineDiv.innerHTML = ''
   for (const member of Object.keys(online)) {
@@ -28,7 +30,7 @@ firebase.database().ref('online').on('value', (snapshot) => {
     </div>`
   }
 })
-firebase.database().ref('admins').on('value', (snapshot) => {
+database.ref('admins').on('value', (snapshot) => {
   const admins = snapshot.val()
   adminsDiv.innerHTML = ''
   for (const member of Object.keys(admins)) {
@@ -38,6 +40,11 @@ firebase.database().ref('admins').on('value', (snapshot) => {
       </div>`
   }
 })
-firebase.database().ref('members_count').on('value', (snapshot) => {
+database.ref('members_count').on('value', (snapshot) => {
   membersCount.innerHTML = snapshot.val()
+})
+database.ref('updated').on('value', (snapshot) => {
+  const date = new Date(snapshot.val() * 1000)
+  updated.innerText = `${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}:${('0' + date.getSeconds()).substr(-2)} \
+${date.getDate()}.${('0' + date.getMonth()).substr(-2)}.${date.getFullYear()}`
 })
