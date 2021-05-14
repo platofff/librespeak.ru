@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig)
 const onlineDiv = document.getElementById('online')
 const adminsDiv = document.getElementById('admins')
 const membersCount = document.getElementById('members-count')
-const getURL = (vk_id) => vk_id > 0 ? `https://vk.com/id${vk_id}` : `https://vk.com/club${Math.abs(vk_id)}`
+const getURL = (vkId) => vkId > 0 ? `https://vk.com/id${vkId}` : `https://vk.com/club${Math.abs(vkId)}`
 
 firebase.database().ref('online').on('value', (snapshot) => {
   const online = snapshot.val()
