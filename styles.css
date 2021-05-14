@@ -3,7 +3,7 @@ html, body {
     overflow-x: hidden;
 }
 
-footer #header {
+footer, #header {
     background-color: #F5F5F5;
 }
 
@@ -12,7 +12,7 @@ footer {
     font-size: calc(2vw, 1em)
 }
 
-#librespeak .members .label {
+#librespeak, .members, .label {
     color: black;
     font-weight: 700;
     text-decoration: rgb(68, 68, 68);
