@@ -16,9 +16,7 @@ firebase.initializeApp(firebaseConfig)
 const onlineDiv = document.getElementById('online')
 const adminsDiv = document.getElementById('admins')
 const membersCount = document.getElementById('members-count')
-const getURL = (vk_id) => {
-  return vk_id > 0 ? `https://vk.com/id${vk_id}` : `https://vk.com/club${Math.abs(vk_id)}`
-}
+const getURL = (vk_id) => vk_id > 0 ? `https://vk.com/id${vk_id}` : `https://vk.com/club${Math.abs(vk_id)}`
 
 firebase.database().ref('online').on('value', (snapshot) => {
   const online = snapshot.val()
@@ -40,14 +38,6 @@ firebase.database().ref('admins').on('value', (snapshot) => {
       </div>`
   }
 })
-/*
-firebase.database().ref('last_photos').on('value', (snapshot) => {
-  const lastPhotos = snapshot.val()
-  for (let i = 0; i < 10; i++) {
-    document.getElementById(`img${i}`).src = lastPhotos[i]
-  }
-})
-*/
 firebase.database().ref('members_count').on('value', (snapshot) => {
   membersCount.innerHTML = snapshot.val()
 })
