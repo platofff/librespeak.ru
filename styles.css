@@ -17,20 +17,20 @@ footer {
     font-weight: 700;
     text-decoration: rgb(68, 68, 68);
     font-variant: small-caps;
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: Verdana, Geneva, sans-serif
 }
 
 #librespeak {
     letter-spacing: 0.2em;
-    font-size: max(4vw, 2em);
+    font-size: max(4vw, 2em)
 }
 
 #logo {
-    border-radius: 100%;
+    border-radius: 100%
 }
 
 #quote {
-    font-style: italic;
+    font-style: italic
 }
 
 #quote-label {
@@ -49,9 +49,9 @@ footer {
 
 .member {
     cursor: pointer;
-    margin-bottom: 0.1em
+    margin-bottom: 0.25vh
 }
 
 .label {
-    font-size: calc(2vw, 1em);
+    font-size: calc(2vw, 1em)
 }
