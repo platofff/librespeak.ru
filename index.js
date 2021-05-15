@@ -55,7 +55,6 @@ database.ref('online_history').on('value', (snapshot) => {
   const labels = []
   const dataset = []
   const chartContainer = document.getElementById('chart-container')
-  console.log(chartContainer.style)
   for (const timestamp of Object.keys(val)) {
     labels.push(`${new Date(Number(timestamp * 1000)).getHours()}:00`)
     dataset.push(val[timestamp])
@@ -69,7 +68,7 @@ database.ref('online_history').on('value', (snapshot) => {
         datasets: [{
           label: 'Онлайн',
           backgroundColor: 'green',
-          borderColor: 'darkgreen',
+          borderColor: 'green',
           data: dataset
         }]
       },
