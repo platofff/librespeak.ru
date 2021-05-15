@@ -50,14 +50,14 @@ database.ref('updated').on('value', (snapshot) => {
   updated.innerText = `${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}:${('0' + date.getSeconds()).substr(-2)} \
 ${date.getDate()}.${('0' + date.getMonth()).substr(-2)}.${date.getFullYear()}`
 })
-database.ref('online_history').on('value', (snapshot) => {
+database.ref('online_history').once('value', (snapshot) => {
   const val = snapshot.val()
   const labels = []
   const dataset = []
   const chartContainer = document.getElementById('chart-container')
   for (const timestamp of Object.keys(val)) {
     const date = new Date(Number(timestamp * 1000))
-    labels.push(`${date.getHours()}:${date.getMinutes()}`)
+    labels.push(`${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}`)
     dataset.push(val[timestamp])
   }
   const chart = new Chart(
