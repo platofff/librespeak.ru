@@ -1,1 +1,6 @@
-module.exports = { extends: ['standard', 'import'] }
+module.exports = {
+  extends: [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'standard']
+}

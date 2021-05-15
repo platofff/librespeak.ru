@@ -55,3 +55,7 @@ footer {
 .label {
     font-size: calc(2vw, 1em)
 }
+
+canvas {
+  width: 100%;
+}

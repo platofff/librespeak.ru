@@ -1,5 +1,7 @@
+'use strict'
 import './3rd-party/firebase-app.js'
 import './3rd-party/firebase-database.js'
+import './3rd-party/chart.js'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSkxxl1QQxaYibhcNohcIWLhdiddT3VrQ',
@@ -47,4 +49,42 @@ database.ref('updated').on('value', (snapshot) => {
   const date = new Date(snapshot.val() * 1000)
   updated.innerText = `${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}:${('0' + date.getSeconds()).substr(-2)} \
 ${date.getDate()}.${('0' + date.getMonth()).substr(-2)}.${date.getFullYear()}`
+})
+database.ref('online_history').on('value', (snapshot) => {
+  const val = snapshot.val()
+  const labels = []
+  const dataset = []
+  const chartContainer = document.getElementById('chart-container')
+  console.log(chartContainer.style)
+  for (const timestamp of Object.keys(val)) {
+    labels.push(`${new Date(Number(timestamp * 1000)).getHours()}:00`)
+    dataset.push(val[timestamp])
+  }
+  const chart = new Chart(
+    chartContainer,
+    {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Онлайн',
+          backgroundColor: 'green',
+          borderColor: 'darkgreen',
+          data: dataset
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            ticks: {
+              callback: (value) => {
+                if (value % 1 === 0) { return value }
+              }
+            }
+          }
+        }
+      }
+    }
+  )
 })
