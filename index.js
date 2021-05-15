@@ -56,7 +56,8 @@ database.ref('online_history').on('value', (snapshot) => {
   const dataset = []
   const chartContainer = document.getElementById('chart-container')
   for (const timestamp of Object.keys(val)) {
-    labels.push(`${new Date(Number(timestamp * 1000)).getHours()}:00`)
+    const date = new Date(Number(timestamp * 1000)
+    labels.push(`${date.getHours()}:${date.getMinutes()}`)
     dataset.push(val[timestamp])
   }
   const chart = new Chart(
