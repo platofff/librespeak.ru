@@ -60,7 +60,7 @@ database.ref('online_history').once('value', (snapshot) => {
     labels.push(`${date.getHours()}:${('0' + date.getMinutes()).substr(-2)}`)
     dataset.push(val[timestamp])
   }
-  const chart = new Chart(
+  new Chart(
     chartContainer,
     {
       type: 'line',
