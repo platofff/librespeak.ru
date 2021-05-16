@@ -68,9 +68,11 @@ database.ref('online_history').once('value', (snapshot) => {
         labels: labels,
         datasets: [{
           label: 'Онлайн',
-          backgroundColor: 'green',
-          borderColor: 'green',
-          data: dataset
+          backgroundColor: '#53CC2B',
+          borderColor: '#53CC2B',
+          data: dataset,
+          fill: true,
+          pointStyle: 'line'
         }]
       },
       options: {
