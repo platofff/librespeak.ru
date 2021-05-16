@@ -1,2 +1,2 @@
 # librespeak.ru
-статистика чятика вк
+MOVED TO https://gitlab.com/platoff/librespeak-ru
